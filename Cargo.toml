@@ -5,3 +5,4 @@ edition = "2021"
 
 [dependencies]
 afire = { version = "0.2.2", features = ["serve_static"] }
+markdown = "0.3.0"
