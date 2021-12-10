@@ -1,5 +1,9 @@
 const console = document.querySelector("#console");
 
+document.querySelector("#check").addEventListener("click", () => {
+  window.console.log(document.querySelector("#to").innerHTML);
+})
+
 function writeConsole(text) {
   return new Promise((resolve, _reject) => {
     console.innerHTML = `${console.innerHTML.slice(
