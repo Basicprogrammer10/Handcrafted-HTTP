@@ -49,14 +49,16 @@ impl Level {
     }
 
     pub fn attach(server: &mut Server, levels: Vec<Level>) {
+        let level = levels.clone();
+
+        // Get Level Page
         server.middleware(Box::new(move |req| {
             if req.method != Method::GET || !req.path.starts_with("/level/") {
                 return None;
             }
 
             let name = req.path.split_once("/level/").unwrap().1;
-            dbg!(&name);
-            for i in &levels {
+            for i in &level {
                 if i.name == name {
                     let mut options = String::new();
 
@@ -74,6 +76,27 @@ impl Level {
                         )
                         .replace("{{OPTIONS}}", &options);
                     return Some(Response::new().text(base));
+                }
+            }
+
+            Some(Response::new().status(404).text("Level not found :/"))
+        }));
+
+        // Check Solution
+        server.middleware(Box::new(move |req| {
+            if req.method != Method::POST || !req.path.starts_with("/check/") {
+                return None;
+            }
+
+            let name = req.path.split_once("/check/").unwrap().1;
+            for i in &levels {
+                if i.name == name {
+                    dbg!(i.correct.join(","));
+                    if String::from_utf8_lossy(&req.body) != i.correct.join(",") {
+                        return Some(Response::new().text("WRONG"));
+                    }
+
+                    return Some(Response::new().text("CORRECT"));
                 }
             }
 
