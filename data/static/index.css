@@ -7,6 +7,9 @@ body {
   width: 100%;
   margin: 0;
 }
+body * {
+  transition: all 0.25s;
+}
 
 .pane {
   box-sizing: border-box;
@@ -39,12 +42,31 @@ body {
 
 .drag {
   display: inline;
+  cursor: grab;
 }
 .drag::before {
   content: " ";
 }
 .drag::after {
   content: " ";
+}
+
+.next {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  width: max-content;
+  z-index: 10;
+}
+.next > button {
+  width: 100%;
+  font-family: monospace;
+  background: black;
+  color: #00ff00;
+  border: solid;
+  border-radius: 5px;
+  height: 50px;
 }
 
 #to {
@@ -79,8 +101,12 @@ body {
 .blink {
   animation: blink 1s ease-in-out infinite;
 }
-.blink::before {
+.blink::after {
   content: "█";
+}
+
+a {
+  color: #51afef;
 }
 
 /*# sourceMappingURL=index.css.map */

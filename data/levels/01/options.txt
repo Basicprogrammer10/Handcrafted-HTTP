@@ -1,3 +1,4 @@
 HTTP/1.1
-GET
-/
+POST
+/api
+<br><br>Hello World

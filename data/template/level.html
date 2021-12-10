@@ -14,6 +14,16 @@
     <title>Handcrafted HTTP</title>
   </head>
   <body>
+    <div class="next" id="next" style="opacity: 0;">
+      <h1>✨ Correct ✨</h1>
+
+      <button type="button" id="nextButton">NEXT</button>
+    </div>
+
+    <div id="readme" class="pane">
+      {{README}}
+    </div>
+
     <div class="pane" id="console">
       <div id="from" class="box">
         {{OPTIONS}}
@@ -25,10 +35,7 @@
 
       <br />
 
-      <button type="button" name="check">SUMBIT</button>
-    </div>
-    <div class="pane">
-      {{README}}
+      <button id="check" type="button" name="check">SUMBIT</button>
     </div>
   </body>
 </html>

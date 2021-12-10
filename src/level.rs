@@ -2,7 +2,7 @@ use std::fs;
 use std::fs::DirEntry;
 use std::path::PathBuf;
 
-use afire::{Method, Response, Server};
+use afire::{Header, Method, Response, Server};
 
 #[derive(Debug, Clone)]
 pub struct Level {
@@ -49,9 +49,8 @@ impl Level {
     }
 
     pub fn attach(server: &mut Server, levels: Vec<Level>) {
-        let level = levels.clone();
-
         // Get Level Page
+        let level = levels.clone();
         server.middleware(Box::new(move |req| {
             if req.method != Method::GET || !req.path.starts_with("/level/") {
                 return None;
@@ -63,7 +62,7 @@ impl Level {
                     let mut options = String::new();
 
                     for j in &i.options {
-                        options.push_str(r#"<div class="drag keep">"#);
+                        options.push_str(r#"<div class="drag">"#);
                         options.push_str(&j);
                         options.push_str(r#"</div>"#)
                     }
@@ -83,13 +82,14 @@ impl Level {
         }));
 
         // Check Solution
+        let level = levels.clone();
         server.middleware(Box::new(move |req| {
             if req.method != Method::POST || !req.path.starts_with("/check/") {
                 return None;
             }
 
             let name = req.path.split_once("/check/").unwrap().1;
-            for i in &levels {
+            for i in &level {
                 if i.name == name {
                     dbg!(i.correct.join(","));
                     if String::from_utf8_lossy(&req.body) != i.correct.join(",") {
@@ -97,6 +97,29 @@ impl Level {
                     }
 
                     return Some(Response::new().text("CORRECT"));
+                }
+            }
+
+            Some(Response::new().status(404).text("Level not found :/"))
+        }));
+
+        // Redir to next level
+        let level = levels.clone();
+        server.middleware(Box::new(move |req| {
+            if req.method != Method::GET || !req.path.starts_with("/next/") {
+                return None;
+            }
+
+            let name = req.path.split_once("/next/").unwrap().1;
+            for (i, item) in level.iter().enumerate() {
+                if item.name == name {
+                    return Some(Response::new().status(308).header(Header::new(
+                        "Location",
+                        match &level.get(i + 1) {
+                            Some(i) => format!("/level/{}", i.name),
+                            None => "/allDone".to_owned(),
+                        },
+                    )));
                 }
             }
 
