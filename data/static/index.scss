@@ -2,12 +2,13 @@ body {
   background: #000000;
   font-family: monospace;
   font-size: 25px;
-  color: #00ff00;
   width: 100%;
   margin: 0;
 
   & * {
     transition: all 0.25s;
+    color: #00ff00;
+    margin: 0;
   }
 }
 
@@ -16,7 +17,7 @@ body {
   border: 1px solid #00ff00;
   border-radius: 10px;
   margin: 0.5vh 0.25vw 0.5vh 0.5vw;
-  width: 49vw;
+  width: 49.25vw;
   height: 99vh;
   padding: 15px;
   overflow-y: scroll;
@@ -67,7 +68,6 @@ body {
     width: 100%;
     font-family: monospace;
     background: black;
-    color: #00ff00;
     border: solid;
     border-radius: 5px;
     height: 50px;
@@ -85,7 +85,6 @@ body {
 #console > button {
   font-family: monospace;
   background: black;
-  color: #00ff00;
   border: solid;
   border-radius: 5px;
   width: 100px;

@@ -2,7 +2,7 @@ use std::fs;
 use std::fs::DirEntry;
 use std::path::PathBuf;
 
-use afire::{Header, Method, Response, Server};
+use afire::{Header, Method, Response, Server, SetCookie};
 
 #[derive(Debug, Clone)]
 pub struct Level {
@@ -73,6 +73,7 @@ impl Level {
                             "{{README}}",
                             &markdown::to_html(&i.readme).replace("&lt;br&gt;", "⏎<br>"),
                         )
+                        .replace("{{LEVEL}}", &i.name)
                         .replace("{{OPTIONS}}", &options);
                     return Some(Response::new().text(base));
                 }
@@ -113,13 +114,18 @@ impl Level {
             let name = req.path.split_once("/next/").unwrap().1;
             for (i, item) in level.iter().enumerate() {
                 if item.name == name {
-                    return Some(Response::new().status(308).header(Header::new(
-                        "Location",
-                        match &level.get(i + 1) {
-                            Some(i) => format!("/level/{}", i.name),
-                            None => "/allDone".to_owned(),
-                        },
-                    )));
+                    return Some(
+                        Response::new()
+                            .status(308)
+                            .header(Header::new(
+                                "Location",
+                                match &level.get(i + 1) {
+                                    Some(i) => format!("/level/{}", i.name),
+                                    None => "/allDone".to_owned(),
+                                },
+                            ))
+                            .cookie(SetCookie::new("Level", i + 1)),
+                    );
                 }
             }
 
