@@ -3,24 +3,57 @@
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/index.css" />
-    <script defer src="/index.js" charset="utf-8"></script>
+    <script defer src="/index.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/dragula@3.7.2/dist/dragula.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/dragula@3.7.2/dist/dragula.min.js"></script>
+
     <title>Handcrafted HTTP</title>
   </head>
   <body>
-    <div class="pane" id="console"><span class="blink">█</span></div>
+    <div class="pane" id="console">
+      <p>
+        Drag the HTTP request parts to the lower box in the correct order. When
+        you think you are done click 'SUBMIT' to check!
+      </p>
+      <div id="from" class="box">
+        <div class="drag keep">GET</div>
+        <div class="drag keep">/</div>
+        <div class="drag keep">HTTP/1.1</div>
+      </div>
+
+      <br />
+
+      <div id="to" class="box"></div>
+
+      <br />
+
+      <button type="button" name="check">SUMBIT</button>
+    </div>
     <div class="pane">
       Hello World and welcome to Handcrafted HTTP!⏎<br />This is like an escape
       room where you will be crafting HTTP requests⏎<br /><br />
       <h2>Example⏎</h2>
-      Below is an example HTTP request. It has a Methood
-      (GET), Path(/), HTTP Version(HTTP/1.1). It also has headers (Key: value)
-      and a body (Hello World)⏎<br /><br />
+      Below is an example HTTP request. It has a Methood (GET), Path(/), HTTP
+      Version(HTTP/1.1). It also has headers (Key: value) and a body (Hello
+      World)⏎<br /><br />
       <div class="box">
         GET / HTTP/1.1⏎<br />
         Host: localhost:8081⏎<br />
         User-Agent: Firefox/94.0⏎<br />⏎<br />
         Hello World⏎<br />
       </div>
+      <br /><br />
+      <h2>Challenge⏎</h2>
+      To start complete this first chalange. You need to drag the avalabale HTTP
+      parts to send a 'GET' request to the path '/'⏎<br /><br /><br />
+
+      See you on the next challenge!
     </div>
   </body>
 </html>
+
+<!-- <span class="blink"></span> -->

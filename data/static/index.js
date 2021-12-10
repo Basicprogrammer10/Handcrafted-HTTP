@@ -10,5 +10,6 @@ function writeConsole(text) {
   });
 }
 
-// ⌠
-// ⌡
+dragula([document.querySelector("#from"), document.querySelector("#to")], {
+  direction: 'horizontal'
+});
