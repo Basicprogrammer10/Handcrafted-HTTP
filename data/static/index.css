@@ -58,7 +58,6 @@ body * {
   top: 50%;
   transform: translateX(-50%) translateY(-100%);
   width: max-content;
-  z-index: 10;
 }
 .next > button {
   width: 100%;
@@ -106,6 +105,24 @@ body * {
 
 a {
   color: #51afef;
+}
+
+blockquote {
+  border-left: 5px solid #0f0;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  border-radius: 10px;
+}
+
+code::before {
+  content: "“";
+}
+code::after {
+  content: "”";
+}
+
+strong {
+  text-shadow: 0 0 10px #0f0;
 }
 
 /*# sourceMappingURL=index.css.map */

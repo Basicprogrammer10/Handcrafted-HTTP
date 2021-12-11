@@ -20,6 +20,34 @@
       <button type="button" id="nextButton">NEXT</button>
     </div>
 
+    <div class="next" id="wrong" style="opacity: 0;">
+      <h1>🦀 Not Quite 🦀</h1>
+      <br />
+      <button type="button" id="wrongButton">TRY AGAIN</button>
+    </div>
+
+    <div class="pane" id="console">
+      <p>
+        First read the info on the right. Then drag the HTTP request parts to
+        the lower box in the correct order. When you think you are done click
+        'SUBMIT' to check!⏎
+      </p>
+      <br />
+      <div id="from" class="box">
+        <div class="drag">GET</div>
+        <div class="drag">/</div>
+        <div class="drag">HTTP/1.1</div>
+      </div>
+
+      <br />
+
+      <div id="to" class="box"></div>
+
+      <br />
+
+      <button id="check" type="button" name="check">SUMBIT</button>
+    </div>
+
     <div id="readme" class="pane">
       Hello World and welcome to Handcrafted HTTP!⏎<br />This is like an escape
       room where you will be crafting HTTP requests⏎<br /><br />
@@ -39,26 +67,6 @@
       avalabale HTTP parts to send a 'GET' request to the path '/'⏎<br /><br /><br />
 
       See you on the next challenge!
-    </div>
-
-    <div class="pane" id="console">
-      <p>
-        First read the info on the right. Then drag the HTTP request parts to the lower box in the correct order. When
-        you think you are done click 'SUBMIT' to check!⏎
-      </p><br />
-      <div id="from" class="box">
-        <div class="drag">GET</div>
-        <div class="drag">/</div>
-        <div class="drag">HTTP/1.1</div>
-      </div>
-
-      <br />
-
-      <div id="to" class="box"></div>
-
-      <br />
-
-      <button id="check" type="button" name="check">SUMBIT</button>
     </div>
   </body>
 </html>
