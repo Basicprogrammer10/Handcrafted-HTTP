@@ -1,6 +1,6 @@
 use std::fs;
 
-use afire::{Request, Response};
+use afire::{Request, Response, SetCookie};
 
 use crate::level::Level;
 
@@ -26,7 +26,15 @@ pub fn level(req: &Request, levels: Vec<Level>) -> Option<Response> {
                 )
                 .replace("{{LEVEL}}", &i.name)
                 .replace("{{OPTIONS}}", &options);
-            return Some(Response::new().text(base));
+            return Some(
+                Response::new()
+                    .cookie(
+                        SetCookie::new("Level", name)
+                            .path("/")
+                            .max_age(365 * 24 * 60 * 60),
+                    )
+                    .text(base),
+            );
         }
     }
 

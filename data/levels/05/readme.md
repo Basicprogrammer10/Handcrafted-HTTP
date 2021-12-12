@@ -1,27 +1,18 @@
-### Challenge #04⏎
+### Challenge #05⏎
 
-> HTTP cookies are small bits of data sent by a web server while a user is browsing a website and stored on the user's computer.
+> Redirects! luv em' or hate em' they are also a thing that website do sometimes. Not gunna lie they are not that fundamental but they still are important. Kind of. not really. But we'll also be teaching you about server responses!
 
-The web browser sends the cookies back to the server with every request.
+When a server sends information to a client, the format is a bit different.
+
+> <VERSION> <STATUS CODE> <REASON PHRASE><br>
+> <HEADERS><br><br>
+> <BODY>
+
+- The **VERSION** is the same as before. Its `HTTP/1.1` in our case. Hasn't changed.
+- The **STATUS CODE** is the status of the response. 200 is `OK`, 404 is `Not Found`, and 418, or `I'm a teapot`, etc.
+- The **REASON PHRASE** is a short textual description of the STATUS CODE
+- The **HEADERS** are the same as before.
+- The **BODY** is also the same as before.
 
 <br/>
-This useful for maintaining user sessions between pages. It is sometimes used for tracking people across pages, collecting their data and using it for profit. (cough. cough. google).
-
-<br/>
-Cookies are crucial to the webs infrastructure. And you're going to learn how they work! Whether you want to or not.
-
-<br/>
-After any **HTTP request**, the server's response may contain a `Set-Cookie` header. This gives the browser a Key, Value and some optional values.
-
-Then after that whenever a request is made from the browser to the server, all cookies will also be supplied with the `Cookie` header.
-
-<br/>
-Your challenge is this: the server has send you the following cookies:
-
-> double-chocolate = way-too-sweet
-
-> oatmeal-raisin = mega-yummy-i-swear
-
-> sugar-cookie = boring-but-blessed
-
-Please make a **GET** request to `/cookie` and attach all cookies along with it (make sure they're in the right order we're too lazy to check).
+Your challenge is as follows: Structure a server response, **redirecting** a user to another site (The response code in this case is **301** `Moved Permanently`). The page to redireect to is defined in the **Location** header.

@@ -1,0 +1,4 @@
+GET
+/api/balance
+HTTP/1.1
+<br>Token: K28x4spWnd

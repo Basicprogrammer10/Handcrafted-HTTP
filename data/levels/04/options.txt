@@ -1,4 +1,7 @@
 GET
+/cookie
 HTTP/1.1
-/api/balance
-<br>Header: K28x4spWnd
+<br>Cookie:
+double-chocolate=way-too-sweet;
+oatmeal-raisin=mega-yummy-i-swear;
+sugar-cookie=boring-but-blessed

@@ -1,6 +1,6 @@
 #[macro_use]
 extern crate lazy_static;
-use afire::{ServeStatic, Server};
+use afire::{Logger, ServeStatic, Server};
 
 mod level;
 mod routes;
@@ -21,6 +21,9 @@ fn main() {
 
     // Serve Routes
     routes::attach(&mut server);
+
+    // Start Logger
+    Logger::new().attach(&mut server);
 
     println!("Serveing: {}:{}", server.ip_string(), server.port);
 
