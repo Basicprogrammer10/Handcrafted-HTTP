@@ -70,10 +70,12 @@ body * {
 
 #to {
   min-height: 34px;
+  width: auto;
 }
 
 #from {
   min-height: 34px;
+  width: auto;
 }
 
 #console > button {
@@ -83,6 +85,10 @@ body * {
   border-radius: 5px;
   width: 100px;
   height: 50px;
+}
+
+#check {
+  float: right;
 }
 
 @keyframes blink {

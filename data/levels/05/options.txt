@@ -1,0 +1,7 @@
+GET
+/cookie
+HTTP/1.1
+<br>Cookie:
+double-chocolate=way-too-sweet;
+oatmeal-raisin=mega-yummy-i-swear;
+sugar-cookie=boring-but-blessed

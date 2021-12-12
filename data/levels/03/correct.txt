@@ -1,0 +1,4 @@
+POST
+/auth
+HTTP/1.1
+<br><br>\{"username": "Nelly", "password": "password123!"\}

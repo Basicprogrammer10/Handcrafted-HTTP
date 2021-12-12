@@ -1,3 +1,5 @@
+#[macro_use]
+extern crate lazy_static;
 use afire::{ServeStatic, Server};
 
 mod level;
@@ -16,9 +18,8 @@ fn main() {
     // Load Levels
     let levels = level::Level::load_all(LEVEL_PATH).unwrap();
     unsafe { LEVELS = levels.clone() }
-    level::Level::attach(&mut server, levels);
 
-    // Serve Other Routes
+    // Serve Routes
     routes::attach(&mut server);
 
     println!("Serveing: {}:{}", server.ip_string(), server.port);

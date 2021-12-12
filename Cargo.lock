@@ -22,7 +22,9 @@ name = "handcrafted_http"
 version = "0.1.0"
 dependencies = [
  "afire",
+ "lazy_static",
  "markdown",
+ "regex",
 ]
 
 [[package]]

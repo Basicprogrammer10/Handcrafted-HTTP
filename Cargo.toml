@@ -5,4 +5,6 @@ edition = "2021"
 
 [dependencies]
 afire = { version = "0.2.2", features = ["serve_static", "cookies"] }
+lazy_static = "1.4.0"
 markdown = "0.3.0"
+regex = "1.5.4"
