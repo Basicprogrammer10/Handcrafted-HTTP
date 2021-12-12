@@ -94,6 +94,11 @@ body {
 
 #check {
   float: right;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 1px 1px #0c0, 2px 2px #0c0, 3px 3px #0c0;
+    transform: translateX(-3px);
+  }
 }
 
 @keyframes blink {
