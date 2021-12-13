@@ -17,11 +17,13 @@ impl Level {
         let base_path = PathBuf::from(path);
         let mut out = Vec::new();
 
-        let folders = fs::read_dir(&base_path)
+        let mut folders = fs::read_dir(&base_path)
             .ok()?
             .map(|x| x.unwrap())
             .filter(|x| x.path().is_dir())
             .collect::<Vec<DirEntry>>();
+
+        folders.sort_unstable_by(|x, y| x.file_name().cmp(&y.file_name()));
 
         for i in folders {
             let name = i.file_name().to_str()?.to_owned();
